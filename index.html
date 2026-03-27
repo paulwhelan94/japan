@@ -15,10 +15,9 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
         
-        /* Animation keyframes for the drawer */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
         @keyframes slideRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
@@ -32,15 +31,16 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useMemo, useEffect } = React;
+        const { useState, useMemo, useEffect, useRef } = React;
 
-        // Simple wrapper for Lucide icons in React-lite mode
+        // Custom Icon Component to bridge Lucide with React UMD
         const Icon = ({ name, size = 24, className = "" }) => {
-            const iconRef = React.useRef(null);
+            const iconRef = useRef(null);
             useEffect(() => {
                 if (iconRef.current) {
                     const LucideIcon = lucide.icons[name];
                     if (LucideIcon) {
+                        iconRef.current.innerHTML = ''; // Clear previous
                         const svg = lucide.createIcons({
                             icons: { [name]: LucideIcon },
                             attrs: { strokeWidth: 2.5, width: size, height: size, class: className }
@@ -48,15 +48,15 @@
                     }
                 }
             }, [name, size, className]);
-            return <i ref={iconRef} data-lucide={name} className={className} style={{width: size, height: size, display: 'inline-block'}}></i>;
+            return <span ref={iconRef} className="inline-flex items-center justify-center" style={{width: size, height: size}}></span>;
         };
 
         const App = () => {
             const [selectedDay, setSelectedDay] = useState(null);
             const [selectedDetail, setSelectedDetail] = useState(null);
 
-            const startDate = new Date(2026, 2, 30);
-            const endDate = new Date(2026, 3, 21);
+            const startDate = new Date(2026, 2, 30); // March 30
+            const endDate = new Date(2026, 3, 21);   // April 21
 
             const days = useMemo(() => {
                 const arr = [];
@@ -87,7 +87,9 @@
                     const dayNum = date.getDate();
                     const month = date.getMonth();
                     let flights = null;
+                    let activity = null;
 
+                    // Flight Data
                     if (month === 2 && dayNum === 30) {
                         flights = [
                             { type: 'Flight', title: "BA1473: GLA → LHR", details: [{ label: "09:05", text: "Departure from Glasgow. Arrive Heathrow 10:40." }], icon: 'Plane' },
@@ -103,12 +105,24 @@
                         flights = [{ type: 'Flight', title: "BA1474: LHR → GLA", details: [{ label: "07:05", text: "Final leg. Arrive Glasgow 08:30." }], icon: 'Plane' }];
                     }
 
-                    const hotelInfo = getHotelForDate(date);
-                    let activity = null;
-                    if (month === 2 && dayNum === 31) activity = { title: "Arrival & Evening Sakura", details: [{ label: "11:00", text: "Arrive Haneda. Transfer to Shibuya hotel." }, { label: "14:00", text: "Explore Miyashita Park adjacent to hotel." }, { label: "18:00", text: "Meguro River Sakura Fubuki and night lights." }], location: "Shibuya & Nakameguro" };
-                    else if (month === 3 && dayNum === 1) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-                    else if (month === 3 && dayNum === 15) activity = { title: "Universal Studios Japan", details: [{ label: "08:00", text: "Early start at USJ." }, { label: "Priority", text: "Super Nintendo World." }], location: "Osaka" };
+                    // Activity Data (Full restoration of your plans)
+                    if (month === 2 && dayNum === 31) {
+                        activity = { title: "Arrival & Evening Sakura", details: [{ label: "11:00", text: "Arrive Haneda. Transfer to Shibuya hotel." }, { label: "14:00", text: "Explore Miyashita Park adjacent to hotel." }, { label: "18:00", text: "Meguro River Sakura Fubuki and night lights." }], location: "Shibuya & Nakameguro" };
+                    } else if (month === 3 && dayNum === 1) {
+                        activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk the peaceful forest path before the crowds arrive." }, { label: "10:20", text: "Shibuya Sky (BOOKED). 360° views of Tokyo and the crossing." }, { label: "14:00", text: "Shinjuku Gyoen National Garden for prime Sakura viewing." }, { label: "19:00", text: "Evening in Shinjuku: Omoide Yokocho or Golden Gai." }], location: "Harajuku / Shibuya / Shinjuku" };
+                    } else if (month === 3 && dayNum === 2) {
+                        activity = { title: "Digital Art & Modern Tokyo", details: [{ label: "10:00", text: "teamLab Borderless at Azabudai Hills." }, { label: "15:00", text: "Explore Roppongi Hills & Mori Garden." }, { label: "19:00", text: "International dinner in Roppongi Hills." }], location: "Azabudai Hills & Roppongi" };
+                    } else if (month === 3 && dayNum === 3) {
+                        activity = { title: "Kamakura Day Trip", details: [{ label: "09:00", text: "Train from Shibuya to Kamakura (60m)." }, { label: "12:00", text: "Great Buddha & Hase-dera Temple." }, { label: "15:00", text: "Dankazura Sakura path to Tsurugaoka Shrine." }], location: "Kamakura" };
+                    } else if (month === 3 && dayNum === 4) {
+                        activity = { title: "Old Tokyo & Ginza Luxury", details: [{ label: "09:00", text: "Sensō-ji Temple and Sumida Park Sakura." }, { label: "13:00", text: "Imperial Palace East Gardens." }, { label: "16:00", text: "Ginza Shopping & Mitsukoshi Depachika." }], location: "Asakusa & Ginza" };
+                    } else if (month === 3 && dayNum === 5) {
+                        activity = { title: "Departure for Hakone", details: [{ label: "Travel", text: "Odakyu Romancecar to Hakone-Yumoto (approx. 85 mins)." }, { label: "Explore", text: "Hakone Open Air Museum or start the Hakone Loop." }, { label: "16:00", text: "Check-in at barhotel Hakone Kazan." }], location: "Shibuya -> Hakone" };
+                    } else if (month === 3 && dayNum === 15) {
+                        activity = { title: "Universal Studios Japan", details: [{ label: "08:00", text: "Early start to beat the gates at USJ." }, { label: "Priority", text: "Super Nintendo World & Wizarding World of Harry Potter." }, { label: "Evening", text: "Universal CityWalk for dinner and shopping." }], location: "Osaka Bay Area" };
+                    }
 
+                    const hotelInfo = getHotelForDate(date);
                     data[dateStr] = {
                         flights,
                         hotel: hotelInfo ? { type: 'Hotel', title: hotelInfo.name, details: [`Price: ${hotelInfo.price}`], location: hotelInfo.location, icon: 'Hotel' } : null,
@@ -209,7 +223,7 @@
                                 <h2 className="text-lg font-black tracking-tight">{selectedDetail.type} Detail</h2>
                             </div>
                             <div className="p-6">
-                                <div className={`inline-flex p-4 rounded-3xl text-white mb-6 shadow-2xl ${selectedDetail.type === 'Flight' ? 'bg-blue-600' : selectedDetail.type === 'Hotel' ? 'bg-orange-600' : 'bg-emerald-600'}`}>
+                                <div className={`inline-flex p-4 rounded-3xl text-white mb-6 shadow-2xl ${selectedDetail.type === 'Flight' ? 'bg-blue-600 shadow-blue-200' : selectedDetail.type === 'Hotel' ? 'bg-orange-600 shadow-orange-200' : 'bg-emerald-600 shadow-emerald-200'}`}>
                                     <Icon name={selectedDetail.type === 'Flight' ? 'Plane' : selectedDetail.type === 'Hotel' ? 'Hotel' : 'MapPin'} size={32} />
                                 </div>
                                 <h1 className="text-3xl font-black text-slate-900 mb-2 leading-tight">{selectedDetail.title}</h1>
@@ -218,7 +232,7 @@
                                     {selectedDetail.details.map((item, idx) => (
                                         <div key={idx} className="bg-slate-50 border border-slate-100 p-5 rounded-3xl">
                                             {item.label && <span className="inline-block bg-white text-indigo-600 text-[10px] font-black px-2 py-1 rounded-lg border border-slate-200 mb-2 uppercase">{item.label}</span>}
-                                            <p className="text-slate-700 text-sm font-medium">{typeof item === 'string' ? item : item.text}</p>
+                                            <p className="text-slate-700 text-sm font-medium leading-relaxed">{typeof item === 'string' ? item : item.text}</p>
                                         </div>
                                     ))}
                                 </div>
