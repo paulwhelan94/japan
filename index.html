@@ -28,7 +28,7 @@
         .animate-in.slide-in-from-right { animation: slideRight 0.3s ease-out; }
     </style>
 </head>
-<body class="bg-white md:bg-slate-50 text-slate-900 overflow-hidden">
+<body class="bg-white md:bg-slate-50 text-slate-900">
     <div id="root"></div>
 
     <script type="text/babel">
@@ -105,9 +105,59 @@
 
                     const hotelInfo = getHotelForDate(date);
                     let activity = null;
-                    if (month === 2 && dayNum === 31) activity = { title: "Arrival & Evening Sakura", details: [{ label: "11:00", text: "Arrive Haneda. Transfer to Shibuya hotel." }, { label: "14:00", text: "Explore Miyashita Park adjacent to hotel." }, { label: "18:00", text: "Meguro River Sakura Fubuki and night lights." }], location: "Shibuya & Nakameguro" };
-                    else if (month === 3 && dayNum === 1) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-                    else if (month === 3 && dayNum === 15) activity = { title: "Universal Studios Japan", details: [{ label: "08:00", text: "Early start at USJ." }, { label: "Priority", text: "Super Nintendo World." }], location: "Osaka" };
+                    if (month === 2 && dayNum === 31) activity = { title: "Arrive in Shibuya / Sakura Canal Walk", details: [{ label: "11:00", text: "Arrive Haneda. Transfer to Shibuya hotel." }, { label: "14:00", text: "Explore Miyashita Park adjacent to hotel." }, { label: "18:00", text: "Meguro River Sakura Fubuki and night lights." }], location: "Shibuya / Nakameguro" };
+                    else if (month === 3 && dayNum === 1) activity = { title: "Meiju Jingu / Shibuya Sky / Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+					else if (month === 3 && dayNum === 2) activity = { title: "teamLab Borderless / TBC", details: [{ label: "10:00", text: "teamLab Borderless at Azabudai Hills." }, { label: "TBC", text: "TBC." }], location: "Azabudai Hills / TBC" };
+					else if (month === 3 && dayNum === 3) activity = { title: "Kamakura Day Trip", details: [{ label: "09:00", text: "Train from Shibuya to Kamakura." }, { label: "12:00", text: "Great Buddha & Hase-era Temple." }, { label: "15:00", text: "Dankazura Sakura path to Tsurugaoka Shrine." }], location: "Kamakura" };
+					else if (month === 3 && dayNum === 4) activity = { title: "Senso-ji / Imperial Palace / Ginza", details: [{ label: "09:00", text: "Senso-ji Temple and Sumida Park Sakura." }, { label: "13:00", text: "Imperial Palace East Gardens." }, { label: "16:00", text: "Ginza Shopping & Mitsukoshi Depachika." }], location: "Asakusa / Ginza" };
+					else if (month === 3 && dayNum === 5) activity = { title: "Hakone Loop", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+					else if (month === 3 && dayNum === 6) activity = { title: "Hakone to Kyoto / Nishiki Market / Kiyomizu-dera / Pontocho", 
+																		details: [
+																			{ label: "10:30", text: "Depart bar hotel Hakone Kazan. Travel via Hakone-Tozan bus and Shinkansen." },
+																			{ label: "14:30", text: "Check-in at Hotel Resol Kyoto Kawaramachi Sanjo." },
+																			{ label: "15:30", text: "Nishiki Market. Quick visit for street food snacks." },
+																			{ label: "16:45", text: "Kiyomizu-dera. Sunset views from the famous wooden stage." },
+																			{ label: "18:00", text: "Sannenzaka & Ninenzaka. Evening walk through preserved streets." },
+																			{ label: "19:30", text: "Dinner in Pontocho or Gion area." }
+																		], 
+																		location: "Hakone / Kyoto"};
+					else if (month === 3 && dayNum === 7) activity = { title: "Bamboo Forest / % Arabica / 1200 Statues", 
+																		details: [
+																			{ label: "08:00", text: "Arashiyama Bamboo Forest. Walk the grove before it gets busy." }, 
+																			{ label: "09:00", text: "% ARABICA Kyoto Arashiyama. Coffee with a view of Togetsukyo Bridge." }, 
+																			{ label: "10:30", text: "Saga-toriimoto preserved street. Historic walk towards the north." }, 
+																			{ label: "11:30", text: "Adashino Nenbutsuji Temple. Explore the stone spirits and quiet grove." },
+																			{ label: "13:30", text: "Otagi Nenbutsuji Temple. Visit the 1,200 unique stone rakan statues." }
+																		], 
+																		location: "Arashiyama / Sagano"};
+					else if (month === 3 && dayNum === 8) activity = { 
+																		title: "Philosopher's Path / Eastern Temples", 
+																		details: [
+																			{ label: "09:00", text: "Ginkaku-ji (Silver Pavilion). Zen temple and sand gardens." }, 
+																			{ label: "10:30", text: "Philosopher's Path. A scenic walk along a cherry tree-lined canal." }, 
+																			{ label: "12:30", text: "Eikan-do Temple. Famous for its autumn colors and Buddha statue." }, 
+																			{ label: "14:00", text: "Nanzen-ji Temple. Grand Zen complex with a brick aqueduct." },
+																			{ label: "15:30", text: "Keage Incline. Historic railway walk near the canal." }], 
+																		location: "Higashiyama / Sakyo"};
+					else if (month === 3 && dayNum === 9) activity = {
+																		title: "Torii Gates / Travel to Hiroshima", 
+																		details: [
+																			{ label: "07:00", text: "Fushimi Inari Taisha. Early morning hike through the 10,000 torii gates." }, 
+																			{ label: "09:30", text: "Return to Hotel / Collect luggage and head to Kyoto Station." }, 
+																			{ label: "10:30", text: "Shinkansen to Hiroshima. 1.5-hour journey via Nozomi or Sakura train." }, 
+																			{ label: "12:30", text: "Arrival at Hiroshima Station. Lunch and check-in." }], 
+																		location: "Kyoto / Hiroshima"};
+					else if (month === 3 && dayNum === 10) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+					else if (month === 3 && dayNum === 11) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+					else if (month === 3 && dayNum === 12) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+					else if (month === 3 && dayNum === 13) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+					else if (month === 3 && dayNum === 14) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+					else if (month === 3 && dayNum === 15) activity = { title: "Universal Studios Japan", details: [{ label: "08:00", text: "Early start at USJ." }, { label: "Priority", text: "Super Nintendo World." }], location: "Osaka" };
+					else if (month === 3 && dayNum === 16) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+					else if (month === 3 && dayNum === 17) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+					else if (month === 3 && dayNum === 18) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+					else if (month === 3 && dayNum === 19) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
+                    else if (month === 3 && dayNum === 20) activity = { title: "Universal Studios Japan", details: [{ label: "08:00", text: "Early start at USJ." }, { label: "Priority", text: "Super Nintendo World." }], location: "Osaka" };
 
                     data[dateStr] = {
                         flights,
