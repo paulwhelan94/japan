@@ -104,12 +104,37 @@
                         flights = [{ type: 'Flight', title: "BA1474: LHR → GLA", details: [{ label: "07:05", text: "Final leg. Arrive Glasgow 08:30." }], icon: 'Plane' }];
                     }
                     
-                    if (month === 3 && dayNum === 6) {
-                        trains = [{ type: 'Train', title: "Shinkansen: Odawara → Kyoto", details: [{ label: "12:00", text: "Hikari Bullet Train. 2h 15m journey." }], icon: 'TrainFront' }];
-                    } else if (month === 3 && dayNum === 9) {
-                        trains = [{ type: 'Train', title: "Shinkansen: Kyoto → Hiroshima", details: [{ label: "10:30", text: "Nozomi Bullet Train. 1h 30m journey." }], icon: 'TrainFront' }];
-                    }
-
+                   // Train logic for specific travel days
+                    if (month === 3 && dayNum === 5) {
+                        trains = [{ 
+                            type: 'Train', 
+                            title: "Romancecar: Shinjuku → Hakone-Yumoto", 
+                            details: [{ label: "09:00", text: "Limited Express Romancecar. 85 min journey to the mountains." }], 
+                            icon: 'TrainFront' 
+                        }];
+                    } else if (month === 3 && dayNum === 6) {
+                        trains = [{ 
+                        type: 'Train', 
+                        title: "Shinkansen: Odawara → Kyoto", 
+                        details: [{ label: "12:00", text: "Hikari Bullet Train. 2h 15m journey." }], 
+                        icon: 'TrainFront' 
+                    }];
+                } else if (month === 3 && dayNum === 9) {
+                    trains = [{ 
+                        type: 'Train', 
+                        title: "Shinkansen: Kyoto → Hiroshima", 
+                        details: [{ label: "10:30", text: "Nozomi/Sakura Bullet Train. 1h 30m journey." }], 
+                        icon: 'TrainFront' 
+                    }];
+                } else if (month === 3 && dayNum === 12) {
+                    trains = [{ 
+                        type: 'Train', 
+                        title: "Shinkansen: Hiroshima → Shin-Osaka", 
+                        details: [{ label: "11:00", text: "Sanyo Shinkansen. Arrive Osaka in 80 mins." }], 
+                        icon: 'TrainFront' 
+                    }];
+                }
+                    
                     const hotelInfo = getHotelForDate(date);
                     let activity = null;
                     if (month === 2 && dayNum === 31) activity = { title: "Arrive in Shibuya / Sakura Canal Walk", details: [{ label: "11:00", text: "Arrive Haneda. Transfer to Shibuya hotel." }, { label: "14:00", text: "Explore Miyashita Park adjacent to hotel." }, { label: "18:00", text: "Meguro River Sakura Fubuki and night lights." }], location: "Shibuya / Nakameguro" };
