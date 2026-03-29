@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Trip 2026 Itinerary</title>
+    <title>L&P Honeymoon 2026</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -73,13 +73,49 @@
                 const getHotelForDate = (date) => {
                     const month = date.getMonth();
                     const day = date.getDate();
-                    if ((month === 2 && day === 31) || (month === 3 && day >= 1 && day < 5)) return { name: "all day place shibuya", price: "£1,446.74", location: "Shibuya, Tokyo" };
-                    if (month === 3 && day === 5) return { name: "barhotel Hakone Kazan", price: "£391.74", location: "Hakone" };
-                    if (month === 3 && day >= 6 && day < 9) return { name: "Hotel Resol Kyoto Kawaramachi Sanjo", price: "£735.18", location: "Kyoto" };
-                    if (month === 3 && day >= 9 && day < 12) return { name: "KIRO Hiroshima", price: "£415.83", location: "Hiroshima" };
-                    if (month === 3 && day >= 12 && day < 17) return { name: "The Lively Osaka Honmachi", price: "£657.43", location: "Osaka" };
-                    if (month === 3 && day >= 17 && day < 20) return { name: "The Clan Hotel Singapore", price: "£724.19", location: "Singapore" };
-                    return null;
+                    if ((month === 2 && day === 31) || (month === 3 && day >= 1 && day < 5)) {
+						return { 
+							name: "all day place shibuya", 
+							address: "1-17-1 Shibuya, Shibuya City, Tokyo 150-0002, Japan", 
+							location: "Shibuya, Tokyo" 
+						};
+					}
+					if (month === 3 && day === 5) {
+						return { 
+							name: "barhotel Hakone Kazan", 
+							address: "507-4 Kowakudani, Hakone, Ashigarashimo District, Kanagawa 250-0406, Japan", 
+							location: "Hakone" 
+						};
+					}
+					if (month === 3 && day >= 6 && day < 9) {
+						return { 
+							name: "Hotel Resol Kyoto Kawaramachi Sanjo", 
+							address: "59-1 Daikokucho, Nakagyo Ward, Kyoto, 604-8031, Japan", 
+							location: "Kyoto" 
+						};
+					}
+					if (month === 3 && day >= 9 && day < 12) {
+						return { 
+							name: "KIRO Hiroshima", 
+							address: "3-21 Mikawacho, Naka Ward, Hiroshima, 730-0029, Japan", 
+							location: "Hiroshima" 
+						};
+					}
+					if (month === 3 && day >= 12 && day < 17) {
+						return { 
+							name: "The Lively Osaka Honmachi", 
+							address: "1-5-11 Minamihonmachi, Chuo Ward, Osaka, 541-0054, Japan", 
+							location: "Osaka" 
+						};
+					}
+					if (month === 3 && day >= 17 && day < 20) {
+						return { 
+							name: "The Clan Hotel Singapore", 
+							address: "10 Cross St, Singapore 048417", 
+							location: "Singapore" 
+						};
+					}
+					return null;
                 };
 
                 days.forEach((date) => {
@@ -109,7 +145,7 @@
                         trains = [{ 
                             type: 'Train', 
                             title: "Romancecar: Shinjuku → Hakone-Yumoto", 
-                            details: [{ label: "09:00", text: "Limited Express Romancecar. 85 min journey to the mountains." }], 
+                            details: [{ label: "08:00", text: "Limited Express Romancecar. 85 min journey to the mountains." }], 
                             icon: 'TrainFront' 
                         }];
                     } else if (month === 3 && dayNum === 6) {
@@ -137,13 +173,66 @@
                     
                     const hotelInfo = getHotelForDate(date);
                     let activity = null;
-                    if (month === 2 && dayNum === 31) activity = { title: "Arrive in Shibuya / Sakura Canal Walk", details: [{ label: "11:00", text: "Arrive Haneda. Transfer to Shibuya hotel." }, { label: "14:00", text: "Explore Miyashita Park adjacent to hotel." }, { label: "18:00", text: "Meguro River Sakura Fubuki and night lights." }], location: "Shibuya / Nakameguro" };
-                    else if (month === 3 && dayNum === 1) activity = { title: "Meiju Jingu / Shibuya Sky / Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-					else if (month === 3 && dayNum === 2) activity = { title: "teamLab Borderless / TBC", details: [{ label: "10:00", text: "teamLab Borderless at Azabudai Hills." }, { label: "TBC", text: "TBC." }], location: "Azabudai Hills / TBC" };
-					else if (month === 3 && dayNum === 3) activity = { title: "Kamakura Day Trip", details: [{ label: "09:00", text: "Train from Shibuya to Kamakura." }, { label: "12:00", text: "Great Buddha & Hase-era Temple." }, { label: "15:00", text: "Dankazura Sakura path to Tsurugaoka Shrine." }], location: "Kamakura" };
-					else if (month === 3 && dayNum === 4) activity = { title: "Senso-ji / Imperial Palace / Ginza", details: [{ label: "09:00", text: "Senso-ji Temple and Sumida Park Sakura." }, { label: "13:00", text: "Imperial Palace East Gardens." }, { label: "16:00", text: "Ginza Shopping & Mitsukoshi Depachika." }], location: "Asakusa / Ginza" };
-					else if (month === 3 && dayNum === 5) activity = { title: "Hakone Loop", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-					else if (month === 3 && dayNum === 6) activity = { title: "Hakone to Kyoto / Nishiki Market / Kiyomizu-dera / Pontocho", 
+					// Note: month 2 is March, month 3 is April
+					if (month === 2 && dayNum === 31) activity = { 
+						title: "Arrival / Shibuya Crossing / Cherry Blossoms", 
+						details: [
+							{ label: "11:00", text: "Land at Haneda. Priority: Drop bags at All Day Place Shibuya." }, 
+							{ label: "13:00", text: "Lunch at Katsudon-ya Zuicho – iconic hidden gem." }, 
+							{ label: "15:00", text: "Miyashita Park & Shibuya Crossing. Coffee at About Life." },
+							{ label: "18:00", text: "Meguro River Sakura. The pink lights over the canal are world-class." }], 
+						location: "Shibuya / Nakameguro" };
+
+					else if (month === 3 && dayNum === 1) activity = { 
+						title: "Meiju Jingu / Shibuya Sky / Shinjuku Gyoen / Piss Alley", 
+						details: [
+							{ label: "08:00", text: "Meiji Jingu Shrine. Beat the crowds for the forest walk." }, 
+							{ label: "10:20", text: "Shibuya Sky. Open-air observation deck." }, 
+							{ label: "14:00", text: "Shinjuku Gyoen National Garden. Picnic under the Sakura blooms." }, 
+							{ label: "17:00", text: "Omoide Yokocho. Sunset drinks in 'Piss Alley' near Shinjuku Station." }], 
+						location: "Shibuya / Shinjuku" };
+
+					else if (month === 3 && dayNum === 2) activity = { 
+						title: "teamLab Borderless / Tokyo Tower", 
+						details: [
+							{ label: "10:00", text: "teamLab Borderless at Azabudai Hills. Mind-bending digital art." }, 
+							{ label: "13:00", text: "Lunch at Azabudai Hills or nearby Ittenbari Ramen." }, 
+							{ label: "15:00", text: "Zojoji Temple & Tokyo Tower. Great photo op with the temple and tower." }, 
+							{ label: "18:00", text: "Roppongi Hills Sky Deck. Open-air view of the city at twilight." }], 
+						location: "Azabudai / Roppongi" };
+
+					else if (month === 3 && dayNum === 3) activity = { 
+						title: "Kamakura Day Trip", 
+						details: [
+							{ label: "09:00", text: "Train from Shibuya to Kamakura. Take the scenic Enoden line." }, 
+							{ label: "12:00", text: "Kotoku-in (Great Buddha) & Hase-dera Temple." }, 
+							{ label: "15:00", text: "Dankazura Sakura path leading to Tsurugaoka Hachimangu Shrine." }], 
+						location: "Kamakura" };
+
+					else if (month === 3 && dayNum === 4) activity = { 
+						title: "Senso-ji / Imperial Palace / Ginza", 
+						details: [
+							{ label: "09:00", text: "Senso-ji Temple and Sumida Park Sakura stroll." }, 
+							{ label: "11:30", text: "Coffee Crawl: Glitch Coffee or Fuglen Asakusa." }, 
+							{ label: "13:30", text: "Imperial Palace East Gardens. Check the Chidorigafuchi Moat Sakura." }, 
+							{ label: "16:00", text: "Ginza Shopping & Mitsukoshi Depachika. Coffee at BONGEN." }], 
+						location: "Asakusa / Ginza" };
+					
+					else if (month === 3 && dayNum === 5) activity = { 
+						title: "Hakone Loop & Teppanyaki Feast", 
+						details: [
+							{ label: "08:00", text: "Romancecar from Shinjuku. Drop bags at Hakone-Yumoto Carrying Service." }, 
+							{ label: "10:15", text: "Tozan Railway from Yumoto to Miyanoshita for your forest walk." },
+							{ label: "10:45", text: "Forest Walk. Miyanoshita historic village and NARAYA CAFE footbath." }, 
+							{ label: "12:15", text: "Itoh Dining by Nobu. High-end Teppanyaki." }, 
+							{ label: "14:30", text: "The Loop: Hakone Ropeway over Owakudani to the Lake Ashi Pirate Ship." }, 
+							{ label: "16:30", text: "Heiwa-no-Torii. The 'floating' red gate at Hakone Shrine for photos." }, 
+							{ label: "17:20", text: "Bus Stop. Catch Line H from Motohakone-ko to the hotel." },
+							{ label: "18:00", text: "Check-in bar hotel Hakone. Settle in before Onsen booking." },
+							{ label: "19:00", text: "Onsen booking." }], 
+						location: "Hakone" };
+	
+	else if (month === 3 && dayNum === 6) activity = { title: "Hakone to Kyoto / Nishiki Market / Kiyomizu-dera / Pontocho", 
 																		details: [
 																			{ label: "10:30", text: "Depart bar hotel Hakone Kazan. Travel via Hakone-Tozan bus and Shinkansen." },
 																			{ label: "14:30", text: "Check-in at Hotel Resol Kyoto Kawaramachi Sanjo." },
@@ -171,30 +260,134 @@
 																			{ label: "14:00", text: "Nanzen-ji Temple. Grand Zen complex with a brick aqueduct." },
 																			{ label: "15:30", text: "Keage Incline. Historic railway walk near the canal." }], 
 																		location: "Higashiyama / Sakyo"};
-					else if (month === 3 && dayNum === 9) activity = {
-																		title: "Torii Gates / Travel to Hiroshima", 
-																		details: [
-																			{ label: "07:00", text: "Fushimi Inari Taisha. Early morning hike through the 10,000 torii gates." }, 
-																			{ label: "09:30", text: "Return to Hotel / Collect luggage and head to Kyoto Station." }, 
-																			{ label: "10:30", text: "Shinkansen to Hiroshima. 1.5-hour journey via Nozomi or Sakura train." }, 
-																			{ label: "12:30", text: "Arrival at Hiroshima Station. Lunch and check-in." }], 
-																		location: "Kyoto / Hiroshima"};
-					else if (month === 3 && dayNum === 10) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-					else if (month === 3 && dayNum === 11) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-					else if (month === 3 && dayNum === 12) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-					else if (month === 3 && dayNum === 13) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-					else if (month === 3 && dayNum === 14) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-					else if (month === 3 && dayNum === 15) activity = { title: "Universal Studios Japan", details: [{ label: "08:00", text: "Early start at USJ." }, { label: "Priority", text: "Super Nintendo World." }], location: "Osaka" };
-					else if (month === 3 && dayNum === 16) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-					else if (month === 3 && dayNum === 17) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-					else if (month === 3 && dayNum === 18) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-					else if (month === 3 && dayNum === 19) activity = { title: "Shrine, Sky & Sakura", details: [{ label: "08:00", text: "Meiji Jingu Shrine. Walk forest path." }, { label: "10:20", text: "Shibuya Sky (BOOKED)." }, { label: "14:00", text: "Shinjuku Gyoen National Garden." }], location: "Shibuya / Shinjuku" };
-                    else if (month === 3 && dayNum === 20) activity = { title: "Universal Studios Japan", details: [{ label: "08:00", text: "Early start at USJ." }, { label: "Priority", text: "Super Nintendo World." }], location: "Osaka" };
+					else if (month === 3 && dayNum === 9) activity = { 
+						title: "Torii Gates / Travel to Hiroshima", 
+						details: [
+							{ label: "07:00", text: "Fushimi Inari Taisha. Early morning hike through the 10,000 torii gates." }, 
+							{ label: "09:30", text: "Return to Hotel / Collect luggage and head to Kyoto Station." }, 
+							{ label: "10:30", text: "Shinkansen to Hiroshima. 1.5-hour journey via Nozomi or Sakura train." }, 
+							{ label: "12:30", text: "Arrival at Hiroshima Station. Check-in and Riverside Sakura walk." },
+							{ label: "18:30", text: "Dinner at Okonomimura. Multi-story Hiroshima-style Okonomiyaki hub." }
+						], 
+						location: "Kyoto / Hiroshima"};
 
+					else if (month === 3 && dayNum === 10) activity = { 
+						title: "Peace Memorial & Historic Gardens", 
+						details: [
+							{ label: "08:00", text: "Peace Memorial Museum. Early reserved entry to avoid peak crowds." }, 
+							{ label: "10:30", text: "Peace Memorial Park. See the A-Bomb Dome and Children's Monument." }, 
+							{ label: "13:00", text: "Hiroshima Castle. Explore the grounds and the five-story keep." }, 
+							{ label: "15:00", text: "Shukkeien Garden. Traditional tea house and late-season Sakura." },
+							{ label: "17:30", text: "Hondori Arcade. Evening shopping and casual downtown dining." }
+						], 
+						location: "Central Hiroshima"};
+
+					else if (month === 3 && dayNum === 11) activity = { 
+						title: "Miyajima Island Day Trip", 
+						details: [
+							{ label: "09:00", text: "Ferry to Miyajima. Iconic 'floating' Torii gate and Itsukushima Shrine." }, 
+							{ label: "11:00", text: "Daisho-in Temple. Historic mountain temple with 500 unique statues." }, 
+							{ label: "13:30", text: "Miyajima Ropeway. Ascend Mt. Misen for Seto Inland Sea views." }, 
+							{ label: "16:00", text: "Omotesando Street. Try grilled oysters and Momiji Manju cakes." },
+							{ label: "19:00", text: "Return to Hiroshima. Farewell dinner in the city center." }
+						], 
+						location: "Miyajima Island"};
+
+					else if (month === 3 && dayNum === 12) activity = { 
+						title: "Arrival / Dotonbori / Namba Yasaka", 
+						details: [
+							{ label: "13:30", text: "Arrival at The Lively Osaka Honmachi. Check-in and refresh." }, 
+							{ label: "15:30", text: "Dotonbori. Iconic canal walk, street food, and Glico Man sign." }, 
+							{ label: "18:00", text: "Namba Yasaka Jinja. Visit the famous lion-head shrine." }, 
+							{ label: "19:30", text: "Dinner at Okonomiyaki Kiji (Umeda) or local Dotonbori stalls." }], 
+						location: "Honmachi / Namba"};
+
+					else if (month === 3 && dayNum === 13) activity = { 
+						title: "Castle Views / Sakuranomiya / Shinsekai", 
+						details: [
+							{ label: "09:30", text: "Osaka Castle. Historic samurai museum and scenic grounds." }, 
+							{ label: "12:30", text: "Sakuranomiya Park. Relaxed riverside walk with potential blossoms." }, 
+							{ label: "15:30", text: "Shinsekai. Retro streets, Tsutenkaku Tower, and Kushikatsu snacks." }, 
+							{ label: "18:30", text: "Dinner in Shinsekai or head back to Honmachi for local bars." }], 
+						location: "Chuo / Naniwa"};
+
+					else if (month === 3 && dayNum === 14) activity = { 
+						title: "Nara Day Trip", 
+						details: [
+							{ label: "09:00", text: "Train to Nara. Meet the bowing deer at Nara Park." }, 
+							{ label: "11:30", text: "Todai-ji Temple. See the Great Buddha in the world's largest wooden building." }, 
+							{ label: "14:30", text: "Naramachi. Explore the historic merchant streets and craft shops." }, 
+							{ label: "17:30", text: "Return to Osaka. Evening at leisure near the hotel." }], 
+						location: "Nara / Osaka"};
+
+					else if (month === 3 && dayNum === 15) activity = { 
+						title: "Universal Studios Japan", 
+						details: [
+							{ label: "07:00", text: "Quick breakfast at THE LIVELY KITCHEN or Café TOKIONA." }, 
+							{ label: "07:30", text: "Depart for USJ. 5 min walk to Sakaisuji-Honmachi Station." }, 
+							{ label: "07:40", text: "Transit: Chuo Line to Bentencho > JR Loop Line to Nishikujo > JR Sakurajima Line." }, 
+							{ label: "08:15", text: "Arrive at Universal-City Station. Short walk to the park gates." }, 
+							{ label: "14:20", text: "Super Nintendo World Entry. Proceed directly to Donkey Kong Country (back of the area)." }, 
+							{ label: "14:50", text: "Deadline: Mine Cart Madness. Experience the new Donkey Kong attraction." }], 
+						location: "Universal City"};
+
+					else if (month === 3 && dayNum === 16) activity = { 
+						title: "Honmachi Coffee Crawl / Umeda Views", 
+						details: [
+							{ label: "09:00", text: "Honmachi Breakfast. Try WAREWAREWA or Aoma Coffee near the hotel." }, 
+							{ label: "11:30", text: "Umeda Sky Building. 360-degree city views from the floating garden." }, 
+							{ label: "14:00", text: "Final Coffee Stop. Ourlog Coffee Honmachi or LiLo Coffee Roasters." }, 
+							{ label: "19:30", text: "Farewell Dinner. Premium Sushi or Izakaya in the Kita district." }], 
+						location: "Honmachi / Umeda"};
+
+					else if (month === 3 && dayNum === 17) activity = { 
+						title: "Head to Singapore", 
+						details: [
+							{ label: "10:00", text: "Final local walk. Grab snacks at Shinsekai Market or nearby." }, 
+							{ label: "12:30", text: "Nankai Rap:t train to KIX. Direct express from Namba Station." }, 
+							{ label: "15:50", text: "Flight Departure. Fly to Singapore from Kansai Airport." },
+							{ label: "21:25", text: "Touchdown at Changi. Clear immigration & Grab/Taxi to The Clan." }, 
+							{ label: "23:00", text: "Check-in at The Clan Hotel. Welcome tea & decompress." }, 
+							{ label: "23:30", text: "Short stroll to Telok Ayer Street for the midnight vibe." }], 
+						location: "Osaka / Singapore"};
+
+					else if (month === 3 && dayNum === 18) activity = { 
+						title: "Chinatown / Marina Bay Loop", 
+						details: [
+							{ label: "09:00", text: "Morning Pool Time. Rooftop swim at The Clan." },
+							{ label: "11:30", text: "Maxwell Food Centre. Lunch: Tian Tian Chicken Rice & Sugarcane juice." }, 
+							{ label: "13:00", text: "Chinatown Culture. Buddha Tooth Relic Temple & Ann Siang Hill." }, 
+							{ label: "15:00", text: "Heat Retreat. Rest at hotel during peak UV hours." },
+							{ label: "17:30", text: "Golden Hour Walk. Merlion Park to Helix Bridge." },
+							{ label: "18:30", text: "Rooftop Drinks. CÉ LA VI or Spago at MBS for city lights." },
+							{ label: "20:00", text: "Gardens by the Bay. Supertree Grove Light Show (Garden Rhapsody)." }], 
+						location: "Chinatown / Marina Bay"};
+
+					else if (month === 3 && dayNum === 19) activity = { 
+						title: "Little India / Raffles / Satay Street", 
+						details: [
+							{ label: "09:00", text: "Slow Morning. Breakfast or final pool session." },
+							{ label: "11:00", text: "Little India. Sri Veeramakaliamman Temple & Tekka Centre snacks." }, 
+							{ label: "14:30", text: "Kampong Glam. Haji Lane murals & Sultan Mosque (shaded alleys)." }, 
+							{ label: "18:00", text: "Raffles Long Bar. Iconic Singapore Sling (touristy but fun!)." }, 
+							{ label: "19:30", text: "Satay Street. Dinner at Lau Pa Sat’s outdoor stalls (Boon Tat St)." }], 
+						location: "Little India / Tanjong Pagar"};
+
+					else if (month === 3 && dayNum === 20) activity = { 
+						title: "River Walk / Jewel Finale", 
+						details: [
+							{ label: "09:30", text: "Coffee Crawl. Common Man Stan or Nylon Coffee near hotel." }, 
+							{ label: "11:00", text: "River Walk. Scenic stroll from Boat Quay towards Clarke Quay." },
+							{ label: "13:00", text: "Riverside Lunch. Relaxed meal by the water at Boat Quay." }, 
+							{ label: "15:00", text: "Last Wander. Final souvenir shopping in Chinatown or Funan Mall." },
+							{ label: "18:00", text: "Early Dinner. Light bite at Telok Ayer near the hotel." },
+							{ label: "20:30", text: "Jewel Changi. See the Rain Vortex waterfall before the 22:40 flight." }], 
+						location: "Tanjong Pagar / Changi"};
+					
                     data[dateStr] = {
                         flights,
                         trains,
-                        hotel: hotelInfo ? { type: 'Hotel', title: hotelInfo.name, details: [`Price: ${hotelInfo.price}`], location: hotelInfo.location, icon: 'Hotel' } : null,
+                        hotel: hotelInfo ? { type: 'Hotel', title: hotelInfo.name, details: [`Address: ${hotelInfo.address}`], location: hotelInfo.location, icon: 'Hotel' } : null,
                         activity: activity ? { type: 'Activity', ...activity, icon: 'MapPin' } : null
                     };
                 });
@@ -211,7 +404,7 @@
                         <header className="px-5 pt-8 pb-4 bg-white sticky top-0 z-10 md:static">
                             <h1 className="text-2xl font-black tracking-tight text-indigo-950 flex items-center gap-2">
                                 <Icon name="Calendar" className="text-indigo-600" size={24} />
-                                Lynsey & Paul's Honeymoon
+                                L & P's Honeymoon
                             </h1>
                             <p className="text-slate-400 text-sm font-medium">Japan & Singapore 2026</p>
                         </header>
