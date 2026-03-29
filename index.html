@@ -55,7 +55,7 @@
             const [selectedDay, setSelectedDay] = useState(null);
             const [selectedDetail, setSelectedDetail] = useState(null);
 			const touchStartX = React.useRef(null);
-			const touchEndX = React.useRef(null);
+			const touchStartY = React.useRef(null);
 
             const startDate = new Date(2026, 2, 30);
             const endDate = new Date(2026, 3, 21);
@@ -522,14 +522,25 @@
 		const nextDate = days[nextIndex];
 		setSelectedDay({ date: nextDate, data: tripData[dateKey(nextDate)] });
 	};
-	const handleTouchStart = (e) => { touchStartX.current = e.changedTouches[0].screenX; };
+	const handleTouchStart = (e) => {
+		touchStartX.current = e.changedTouches[0].screenX;
+		touchStartY.current = e.changedTouches[0].screenY;
+	};
 	const handleTouchEnd = (e) => {
+		if (touchStartX.current === null || touchStartY.current === null) return;
 		const endX = e.changedTouches[0].screenX;
-		if (touchStartX.current === null) return;
-		const diff = touchStartX.current - endX;
-		if (Math.abs(diff) < 50) { touchStartX.current = null; return; }
-		goToAdjacentDay(diff > 0 ? 1 : -1);
+		const endY = e.changedTouches[0].screenY;
+		const diffX = touchStartX.current - endX;
+		const diffY = touchStartY.current - endY;
+		// Only treat as a swipe if it is mostly horizontal
+		if (Math.abs(diffX) < 50 || Math.abs(diffX) < Math.abs(diffY)) {
+			touchStartX.current = null;
+			touchStartY.current = null;
+			return;
+		}
+		goToAdjacentDay(diffX > 0 ? 1 : -1);
 		touchStartX.current = null;
+		touchStartY.current = null;
 	};
 return (
                 <div className="min-h-screen pb-safe">
